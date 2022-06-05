@@ -12,3 +12,15 @@ export interface EditedProfile {
   avatar_url: string | undefined
   favorites: string | undefined
 }
+
+export interface Notice {
+  id: string
+  created_at: string
+  user_id: string | undefined
+  content: string
+}
+
+export interface EditedNotice {
+  id: string
+  content: string
+}
