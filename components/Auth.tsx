@@ -55,12 +55,13 @@ export const Auth: React.FC = () => {
             onClick={() => setIsLogin(!isLogin)}
             className="cursor-pointer font-medium hover:text-indigo-500"
           >
-            {isLogin ? '新規登録' : 'ログイン'}
+            {isLogin ? '新規登録はこちら' : 'ログインはこちら'}
           </span>
         </div>
         <button
           type="submit"
-          className="flex w-full justify-center rounded-md bg-indigo-600 py-2 px-4 text-sm text-white"
+          disabled={email === '' || password === ''}
+          className="flex w-full justify-center rounded-md bg-indigo-600 py-2 px-4 text-sm text-white disabled:bg-gray-500"
         >
           {isLogin ? 'ログイン' : '新規登録'}
         </button>

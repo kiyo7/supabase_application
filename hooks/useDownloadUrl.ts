@@ -16,6 +16,7 @@ export const useDownloadUrl = (
         const { data, error } = await supabase.storage
           .from(bucketName)
           .download(filePath)
+
         if (error) {
           setIsLoading(false)
           throw error

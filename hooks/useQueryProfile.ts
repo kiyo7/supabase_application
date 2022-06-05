@@ -4,7 +4,7 @@ import useStore from '../store'
 import { Profile } from '../types'
 import { useMutateProfile } from './useMutateProfile'
 
-export const useQueryProfiles = () => {
+export const useQueryProfile = () => {
   const session = useStore((state) => state.session)
   const editedProfile = useStore((state) => state.editedProfile)
   const updateEditedProfile = useStore((state) => state.updateEditedProfile)
