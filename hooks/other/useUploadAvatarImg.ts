@@ -1,7 +1,7 @@
 import { ChangeEvent } from 'react'
 import { useMutation } from 'react-query'
-import { supabase } from '../utils/supabase'
-import useStore from '../store'
+import { supabase } from '../../utils/supabase'
+import useStore from '../../store'
 
 export const useUploadAvatarImg = () => {
   const editedProfile = useStore((state) => state.editedProfile)

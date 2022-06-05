@@ -1,5 +1,5 @@
-import { useQueryNotices } from '../hooks/useQueryNotices'
-import { useSubscribeNotices } from '../hooks/useSubscribeNotices'
+import { useQueryNotices } from '../hooks/query/useQueryNotices'
+import { useSubscribeNotices } from '../hooks/other/useSubscribeNotices'
 import { NoticeItem } from './NoticeItem'
 import { NoticeForm } from './NoticeForm'
 

@@ -2,7 +2,7 @@ import { memo } from 'react'
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/solid'
 import useStore from '../store'
 import { Notice } from '../types'
-import { useMutateNotice } from '../hooks/useMutateNotice'
+import { useMutateNotice } from '../hooks/mutate/useMutateNotice'
 
 export const NoticeItemMemo: React.FC<Omit<Notice, 'created_at'>> = ({
   id,

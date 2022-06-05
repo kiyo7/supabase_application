@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query'
-import { supabase } from '../utils/supabase'
-import useStore from '../store'
-import { Profile } from '../types'
-import { useMutateProfile } from './useMutateProfile'
+import { supabase } from '../../utils/supabase'
+import useStore from '../../store'
+import { Profile } from '../../types'
+import { useMutateProfile } from '../mutate/useMutateProfile'
 
 export const useQueryProfile = () => {
   const session = useStore((state) => state.session)

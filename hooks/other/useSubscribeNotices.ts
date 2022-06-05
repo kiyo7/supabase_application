@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useQueryClient } from 'react-query'
 import { SupabaseRealtimePayload } from '@supabase/supabase-js'
-import { supabase } from '../utils/supabase'
-import { Notice } from '../types'
+import { supabase } from '../../utils/supabase'
+import { Notice } from '../../types'
 
 export const useSubscribeNotices = () => {
   const queryClient = useQueryClient()

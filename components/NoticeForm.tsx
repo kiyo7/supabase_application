@@ -1,6 +1,6 @@
 import { FormEvent, memo } from 'react'
 import useStore from '../store'
-import { useMutateNotice } from '../hooks/useMutateNotice'
+import { useMutateNotice } from '../hooks/mutate/useMutateNotice'
 
 export const NoticeFormMemo: React.FC = () => {
   const session = useStore((state) => state.session)

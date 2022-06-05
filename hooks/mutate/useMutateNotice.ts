@@ -1,7 +1,7 @@
 import { useMutation } from 'react-query'
-import { supabase } from '../utils/supabase'
-import useStore from '../store'
-import { Notice, EditedNotice } from '../types'
+import { supabase } from '../../utils/supabase'
+import useStore from '../../store'
+import { Notice, EditedNotice } from '../../types'
 
 export const useMutateNotice = () => {
   const resetEditedNotice = useStore((state) => state.resetEditedNotice)

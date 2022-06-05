@@ -1,6 +1,6 @@
 import { useQueryClient, useMutation } from 'react-query'
-import { supabase } from '../utils/supabase'
-import { Profile } from '../types'
+import { supabase } from '../../utils/supabase'
+import { Profile } from '../../types'
 
 export const useMutateProfile = () => {
   const queryClient = useQueryClient()

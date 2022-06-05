@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
-import { supabase } from '../utils/supabase'
-import { Notice } from '../types'
+import { supabase } from '../../utils/supabase'
+import { Notice } from '../../types'
 
 export const useQueryNotices = () => {
   const getNotices = async () => {
