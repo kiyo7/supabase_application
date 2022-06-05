@@ -6,22 +6,16 @@ import { Notice } from '../types'
 
 export const useSubscribeNotices = () => {
   const queryClient = useQueryClient()
-
   useEffect(() => {
-    const getPreviousNotices = () => {
-      let previousNotices = queryClient.getQueryData<Notice[]>(['notices'])
-      if (!previousNotices) {
-        previousNotices = []
-        return previousNotices
-      }
-      return previousNotices
-    }
     const subsc = supabase
       .from('notices')
       .on('INSERT', (payload: SupabaseRealtimePayload<Notice>) => {
-        const previousNotices = getPreviousNotices()
+        let previousNotices = queryClient.getQueryData<Notice[]>(['notice'])
+        if (!previousNotices) {
+          previousNotices = []
+        }
         queryClient.setQueryData(
-          ['notices'],
+          ['notice'],
           [
             ...previousNotices,
             {
@@ -34,10 +28,12 @@ export const useSubscribeNotices = () => {
         )
       })
       .on('UPDATE', (payload: SupabaseRealtimePayload<Notice>) => {
-        const previousNotices = getPreviousNotices()
-
+        let previousNotices = queryClient.getQueryData<Notice[]>(['notice'])
+        if (!previousNotices) {
+          previousNotices = []
+        }
         queryClient.setQueryData(
-          ['notices'],
+          ['notice'],
           previousNotices.map((notice) =>
             notice.id === payload.new.id
               ? {
@@ -51,15 +47,16 @@ export const useSubscribeNotices = () => {
         )
       })
       .on('DELETE', (payload: SupabaseRealtimePayload<Notice>) => {
-        const previousNotices = getPreviousNotices()
-
+        let previousNotices = queryClient.getQueryData<Notice[]>(['notice'])
+        if (!previousNotices) {
+          previousNotices = []
+        }
         queryClient.setQueryData(
-          ['notices'],
+          ['notice'],
           previousNotices.filter((notice) => notice.id !== payload.old.id)
         )
       })
       .subscribe()
-
     const removeSubscription = async () => {
       await supabase.removeSubscription(subsc)
     }
@@ -67,6 +64,4 @@ export const useSubscribeNotices = () => {
       removeSubscription()
     }
   }, [queryClient])
-
-  return {}
 }
