@@ -15,5 +15,6 @@ export const useQueryAvatar = (userId: string | undefined) => {
   return useQuery<Profile, Error>({
     queryKey: ['avatar-url', userId],
     queryFn: getAvatarUrl,
+    refetchOnWindowFocus: true,
   })
 }

@@ -86,6 +86,8 @@ export const PostItemMemo: React.FC<Omit<Post, 'created_at'>> = ({
               className="rounded-lg"
             />
           )}
+        </div>
+        <div className="my-3 flex justify-center">
           {(isLoadingAvatar || isLoadingPost) && <Spinner />}
         </div>
       </li>
