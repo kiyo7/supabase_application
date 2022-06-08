@@ -12,7 +12,7 @@ export const useQueryAvatar = (userId: string | undefined) => {
     if (error) throw new Error(error.message)
     return data
   }
-  return useQuery<Profile[], Error>({
+  return useQuery<Profile, Error>({
     queryKey: ['avatar-url', userId],
     queryFn: getAvatarUrl,
   })

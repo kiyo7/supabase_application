@@ -3,7 +3,7 @@ import { useMutation } from 'react-query'
 import { supabase } from '../../utils/supabase'
 import useStore from '../../store'
 
-export const useUploadAvatarImg = () => {
+export const useUploadPostImg = () => {
   const editedPost = useStore((state) => state.editedPost)
   const updatePost = useStore((state) => state.updateEditedPost)
 
