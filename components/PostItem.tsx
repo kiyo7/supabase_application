@@ -15,6 +15,7 @@ import { Post } from '../types'
 import { useMutatePost } from '../hooks/mutate/useMutatePost'
 import { useQueryAvatar } from '../hooks/query/useQueryAvatar'
 import { useDownloadUrl } from '../hooks/other/useDownloadUrl'
+import { Comments } from './Comments'
 
 export const PostItemMemo: React.FC<Omit<Post, 'created_at'>> = ({
   id,
@@ -22,6 +23,7 @@ export const PostItemMemo: React.FC<Omit<Post, 'created_at'>> = ({
   post_url,
   user_id,
 }) => {
+  const [openComments, setOpenComments] = useState(false)
   const session = useStore((state) => state.session)
   const updateEditedPost = useStore((state) => state.updateEditedPost)
   const { data } = useQueryAvatar(user_id)
@@ -90,6 +92,30 @@ export const PostItemMemo: React.FC<Omit<Post, 'created_at'>> = ({
         <div className="my-3 flex justify-center">
           {(isLoadingAvatar || isLoadingPost) && <Spinner />}
         </div>
+        <ChatAlt2Icon
+          data-testid="open-comments"
+          onClick={() => setOpenComments(!openComments)}
+          className="ml-2 h-6 w-6 cursor-pointer text-blue-500"
+        />
+        {openComments && (
+          <ErrorBoundary
+            fallback={
+              <ExclamationCircleIcon className="my-5 h-10 w-10 text-pink-500" />
+            }
+          >
+            <Suspense
+              fallback={
+                <div className="flex justify-center">
+                  <Spinner />
+                </div>
+              }
+            >
+              <div className="flex justify-center">
+                <Comments postId={id} />
+              </div>
+            </Suspense>
+          </ErrorBoundary>
+        )}
       </li>
     </>
   )
