@@ -35,6 +35,7 @@ export const DashBoard: React.FC = () => {
       <LogoutIcon
         onClick={signOut}
         className="my-6 h-6 w-6 cursor-pointer text-blue-500"
+        data-testid="logout"
       />
       <div className="grid grid-cols-3 gap-4">
         <div className="flex flex-col items-center">
