@@ -70,6 +70,7 @@ export const PostItemMemo: React.FC<Omit<Post, 'created_at'>> = ({
                 className="mx-1 h-5 w-5 cursor-pointer text-blue-500"
               />
               <TrashIcon
+                data-testid="trash-post"
                 onClick={() => {
                   deletePostMutation.mutate(id)
                 }}
